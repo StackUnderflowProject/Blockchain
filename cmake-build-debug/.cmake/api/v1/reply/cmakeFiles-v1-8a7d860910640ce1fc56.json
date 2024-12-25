@@ -125,6 +125,36 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindOpenSSL.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPkgConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",
