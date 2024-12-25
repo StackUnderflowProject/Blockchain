@@ -1,0 +1,6 @@
+# ninja log v6
+0	310	1735133538642828537	CMakeFiles/blockchain.dir/main.cpp.o	8d4441fd2a41a9e
+1	602	1735133538643828537	CMakeFiles/blockchain.dir/block.cpp.o	ba47957861121233
+603	704	1735133539245828537	blockchain	4b769be41c7d7130
+2	783	1735133592610510796	CMakeFiles/blockchain.dir/blockchain.cpp.o	5c679fea66427c9a
+784	903	1735133593393119296	blockchain	953562b64cd9e8bc
