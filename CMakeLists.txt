@@ -16,6 +16,8 @@ add_executable(blockchain main.cpp
         utils.h
         openmpi_test.cpp
         openmpi_test.h
+        peer.h
+        server.h
 )
 
 target_link_libraries(blockchain OpenSSL::SSL OpenSSL::Crypto)

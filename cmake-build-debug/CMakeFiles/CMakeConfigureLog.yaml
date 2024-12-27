@@ -706,3 +706,408 @@ events:
         
       exitCode: 0
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9nWAa8"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9nWAa8"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9nWAa8'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_0ccc4
+        [1/2] /usr/bin/cc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -fdiagnostics-color=always -o CMakeFiles/cmTC_0ccc4.dir/test_mpi.c.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9nWAa8/test_mpi.c
+        [2/2] : && /usr/bin/cc   CMakeFiles/cmTC_0ccc4.dir/test_mpi.c.o -o cmTC_0ccc4  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-B3kduY"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-B3kduY"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-B3kduY'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_bbd2f
+        [1/2] /usr/bin/c++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -std=gnu++23 -fdiagnostics-color=always -o CMakeFiles/cmTC_bbd2f.dir/test_mpi.cpp.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-B3kduY/test_mpi.cpp
+        [2/2] : && /usr/bin/c++   CMakeFiles/cmTC_bbd2f.dir/test_mpi.cpp.o -o cmTC_bbd2f  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1676 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sMx0ar"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sMx0ar"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sMx0ar'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_50623
+        [1/2] /usr/bin/c++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -std=gnu++23 -fdiagnostics-color=always -o CMakeFiles/cmTC_50623.dir/test_mpi.cpp.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-sMx0ar/test_mpi.cpp
+        [2/2] : && /usr/bin/c++   CMakeFiles/cmTC_50623.dir/test_mpi.cpp.o -o cmTC_50623  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-oTurv5"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-oTurv5"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-oTurv5'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_d8eaa
+        [1/2] /usr/bin/cc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -fdiagnostics-color=always -o CMakeFiles/cmTC_d8eaa.dir/test_mpi.c.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-oTurv5/test_mpi.c
+        [2/2] : && /usr/bin/cc   CMakeFiles/cmTC_d8eaa.dir/test_mpi.c.o -o cmTC_d8eaa  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-mVGrce"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-mVGrce"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-mVGrce'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_314f2
+        [1/2] /usr/bin/c++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -std=gnu++23 -fdiagnostics-color=always -o CMakeFiles/cmTC_314f2.dir/test_mpi.cpp.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-mVGrce/test_mpi.cpp
+        [2/2] : && /usr/bin/c++   CMakeFiles/cmTC_314f2.dir/test_mpi.cpp.o -o cmTC_314f2  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1676 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-L67GFy"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-L67GFy"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-L67GFy'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_301a8
+        [1/2] /usr/bin/c++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -std=gnu++23 -fdiagnostics-color=always -o CMakeFiles/cmTC_301a8.dir/test_mpi.cpp.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-L67GFy/test_mpi.cpp
+        [2/2] : && /usr/bin/c++   CMakeFiles/cmTC_301a8.dir/test_mpi.cpp.o -o cmTC_301a8  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-h3VGzm"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-h3VGzm"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-h3VGzm'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_d9bf1
+        [1/2] /usr/bin/cc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -fdiagnostics-color=always -o CMakeFiles/cmTC_d9bf1.dir/test_mpi.c.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-h3VGzm/test_mpi.c
+        [2/2] : && /usr/bin/cc   CMakeFiles/cmTC_d9bf1.dir/test_mpi.c.o -o cmTC_d9bf1  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zxV2Tk"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zxV2Tk"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zxV2Tk'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_23bfe
+        [1/2] /usr/bin/c++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -std=gnu++23 -fdiagnostics-color=always -o CMakeFiles/cmTC_23bfe.dir/test_mpi.cpp.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zxV2Tk/test_mpi.cpp
+        [2/2] : && /usr/bin/c++   CMakeFiles/cmTC_23bfe.dir/test_mpi.cpp.o -o cmTC_23bfe  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1676 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-DwaI7W"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-DwaI7W"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-DwaI7W'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_0bd38
+        [1/2] /usr/bin/c++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -std=gnu++23 -fdiagnostics-color=always -o CMakeFiles/cmTC_0bd38.dir/test_mpi.cpp.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-DwaI7W/test_mpi.cpp
+        [2/2] : && /usr/bin/c++   CMakeFiles/cmTC_0bd38.dir/test_mpi.cpp.o -o cmTC_0bd38  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rVEDE8"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rVEDE8"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rVEDE8'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_fa2c0
+        [1/2] /usr/bin/cc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_fa2c0.dir/test_mpi.c.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rVEDE8/test_mpi.c
+        [2/2] : && /usr/bin/cc   CMakeFiles/cmTC_fa2c0.dir/test_mpi.c.o -o cmTC_fa2c0  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-p7AQ9b"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-p7AQ9b"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-p7AQ9b'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_35ee5
+        [1/2] /usr/bin/c++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -std=gnu++23 -o CMakeFiles/cmTC_35ee5.dir/test_mpi.cpp.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-p7AQ9b/test_mpi.cpp
+        [2/2] : && /usr/bin/c++   CMakeFiles/cmTC_35ee5.dir/test_mpi.cpp.o -o cmTC_35ee5  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1676 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-h5yuIv"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-h5yuIv"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-h5yuIv'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_12cd9
+        [1/2] /usr/bin/c++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -std=gnu++23 -o CMakeFiles/cmTC_12cd9.dir/test_mpi.cpp.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-h5yuIv/test_mpi.cpp
+        [2/2] : && /usr/bin/c++   CMakeFiles/cmTC_12cd9.dir/test_mpi.cpp.o -o cmTC_12cd9  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-e6JtGY"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-e6JtGY"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-e6JtGY'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_329bc
+        [1/2] /usr/bin/cc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -fdiagnostics-color=always -o CMakeFiles/cmTC_329bc.dir/test_mpi.c.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-e6JtGY/test_mpi.c
+        [2/2] : && /usr/bin/cc   CMakeFiles/cmTC_329bc.dir/test_mpi.c.o -o cmTC_329bc  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1326 (_MPI_try_staged_settings)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1649 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eIyWsa"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eIyWsa"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eIyWsa'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_19749
+        [1/2] /usr/bin/c++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -std=gnu++23 -fdiagnostics-color=always -o CMakeFiles/cmTC_19749.dir/test_mpi.cpp.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eIyWsa/test_mpi.cpp
+        [2/2] : && /usr/bin/c++   CMakeFiles/cmTC_19749.dir/test_mpi.cpp.o -o cmTC_19749  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1282 (try_compile)"
+      - "/opt/clion-2024.3.1.1/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindMPI.cmake:1676 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-NNGx3e"
+      binary: "/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-NNGx3e"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-NNGx3e'
+        
+        Run Build Command(s): /opt/clion-2024.3.1.1/bin/ninja/linux/x64/ninja -v cmTC_b88e5
+        [1/2] /usr/bin/c++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -std=gnu++23 -fdiagnostics-color=always -o CMakeFiles/cmTC_b88e5.dir/test_mpi.cpp.o -c /home/mic/CLionProjects/blockchain/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-NNGx3e/test_mpi.cpp
+        [2/2] : && /usr/bin/c++   CMakeFiles/cmTC_b88e5.dir/test_mpi.cpp.o -o cmTC_b88e5  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so  /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so && :
+        
+      exitCode: 0
+...
