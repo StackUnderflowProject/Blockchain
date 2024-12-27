@@ -4,27 +4,15 @@
 
 #include "utils.h"
 
+#include <iomanip>
 #include <stdexcept>
 #include <openssl/evp.h>
+#include <openssl/sha.h>
 
 std::vector<uint8_t> utils::hash(const std::vector<uint8_t> &data) {
-    std::vector<uint8_t> hash(EVP_MAX_MD_SIZE);
-    unsigned int length = 0;
-
-    EVP_MD_CTX *ctx = EVP_MD_CTX_new();
-    if (ctx == nullptr) {
-        throw std::runtime_error("Failed to create EVP_MD_CTX");
-    }
-
-    if (EVP_DigestInit_ex(ctx, EVP_sha256(), nullptr) != 1 ||
-        EVP_DigestUpdate(ctx, data.data(), data.size()) != 1 ||
-        EVP_DigestFinal_ex(ctx, hash.data(), &length) != 1) {
-        EVP_MD_CTX_free(ctx);
-        throw std::runtime_error("Failed to compute SHA-256 hash");
-        }
-
-    EVP_MD_CTX_free(ctx);
-    hash.resize(length);
+    const std::string hex = vec_to_hex(data);
+    std::vector<uint8_t> hash(SHA256_DIGEST_LENGTH);
+    SHA256(reinterpret_cast<const unsigned char *>(hex.c_str()), hex.size(), hash.data());
     return hash;
 }
 
@@ -50,4 +38,12 @@ std::vector<uint8_t> utils::hex_to_vec(const std::string &hex) {
 
     return data;
 }
+
+std::string utils::timestamp_to_string(const time_t timestamp) {
+    std::ostringstream oss;
+    const std::tm *local_time = std::localtime(&timestamp); // Convert to local time
+    oss << std::put_time(local_time, "%Y-%m-%d %H:%M:%S"); // Format the time
+    return oss.str();
+}
+
 

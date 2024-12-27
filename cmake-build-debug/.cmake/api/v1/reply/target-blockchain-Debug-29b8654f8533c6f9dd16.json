@@ -38,13 +38,13 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 21,
+				"line" : 23,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 23,
+				"line" : 25,
 				"parent" : 0
 			},
 			{
@@ -104,7 +104,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 22,
+				"line" : 24,
 				"parent" : 0
 			}
 		]
@@ -259,7 +259,9 @@
 				2,
 				4,
 				6,
-				8
+				8,
+				9,
+				10
 			]
 		}
 	],
@@ -313,6 +315,16 @@
 		{
 			"backtrace" : 1,
 			"path" : "openmpi_test.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "peer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "server.h",
 			"sourceGroupIndex" : 1
 		}
 	],
