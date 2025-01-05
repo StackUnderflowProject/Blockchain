@@ -49,15 +49,36 @@ std::string block::to_string() const {
     return oss.str();
 }
 
+void block::to_json(nlohmann::json &json, const block &block) {
+    json = nlohmann::json{
+        {"index", block.index},
+        {"timestamp", block.timestamp},
+        {"data", block.data},
+        {"hash", block.hash},
+        {"previous_hash", block.previous_hash},
+        {"difficulty", block.difficulty},
+        {"nonce", block.nonce}
+    };
+}
+
+void block::from_json(const nlohmann::json &json, block &b) {
+    json.at("index").get_to(b.index);
+    json.at("timestamp").get_to(b.timestamp);
+    json.at("data").get_to(b.data);
+    json.at("hash").get_to(b.hash);
+    json.at("previous_hash").get_to(b.previous_hash);
+    json.at("difficulty").get_to(b.difficulty);
+    json.at("nonce").get_to(b.nonce);
+}
+
+
 block block::mine_block(const int index, const std::vector<uint8_t> &data,
                         const std::vector<uint8_t> &previous_hash, const unsigned int difficulty,
                         const unsigned int thread_id, const unsigned int num_threads,
                         const std::atomic_bool &block_minded) {
     const time_t timestamp = time(nullptr);
-
     block new_block(index, timestamp, data, previous_hash, difficulty, thread_id);
-
-    const std::vector<uint8_t> target(difficulty, 0x00);
+    const std::string target(difficulty, '0');
 
     do {
         new_block.nonce += num_threads;
@@ -66,8 +87,7 @@ block block::mine_block(const int index, const std::vector<uint8_t> &data,
         if (block_minded.load()) {
             break;
         }
-
-    } while (std::vector(new_block.hash.begin(), new_block.hash.begin() + difficulty) != target);
+    } while (utils::vec_to_hex(new_block.hash).substr(0, difficulty) != target);
 
     return new_block;
 }

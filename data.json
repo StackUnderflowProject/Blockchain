@@ -1,0 +1,36 @@
+{
+  "_id": {
+    "$oid": "67766a6bde69760367c498ce"
+  },
+  "name": "Futsal",
+  "description": "futsal",
+  "activity": "football",
+  "date": {
+    "$date": {
+      "$numberLong": "1735862400000"
+    }
+  },
+  "time": "12:00",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      {
+        "$numberDouble": "15.676106021224578"
+      },
+      {
+        "$numberDouble": "46.540160147034676"
+      }
+    ]
+  },
+  "host": {
+    "$oid": "66436d48eced3a8be51aafb1"
+  },
+  "followers": [],
+  "predicted_count": {
+    "$numberInt": "676"
+  },
+  "__v": {
+    "$numberInt": "86"
+  },
+  "image": "1735814884798-IMG_5.jpg"
+}
