@@ -5,9 +5,12 @@
 #ifndef UTILS_H
 #define UTILS_H
 #include <cstdint>
+#include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
+// #include "blockchain.h"
 
 class utils {
 public:
@@ -18,6 +21,8 @@ public:
     static std::vector<uint8_t> hex_to_vec(const std::string &hex);
 
     static std::string timestamp_to_string(time_t timestamp);
+
+
 };
 
 

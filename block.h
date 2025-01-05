@@ -10,17 +10,19 @@
 #include <string>
 #include <vector>
 
+#include "json.hpp"
 #include "utils.h"
 
 
 class block {
-    int index;
-    time_t timestamp;
+    int index{};
+    time_t timestamp{};
     std::vector<uint8_t> data;
     std::vector<uint8_t> hash;
     std::vector<uint8_t> previous_hash;
-    unsigned int difficulty;
-    unsigned int nonce;
+    unsigned int difficulty{};
+    unsigned int nonce{};
+
 
     block(const int index, const time_t timestamp, const std::vector<uint8_t> &data,
           const std::vector<uint8_t> &previous_hash, const unsigned int difficulty,
@@ -31,6 +33,8 @@ class block {
     }
 
 public:
+    block() = default;
+
     [[nodiscard]] std::vector<uint8_t> get_hash() const {
         return hash;
     }
@@ -60,6 +64,10 @@ public:
     std::vector<uint8_t> block_to_vec();
 
     [[nodiscard]] std::string to_string() const;
+
+    static void to_json(nlohmann::json &json, const block& block);
+
+    static void from_json(const nlohmann::json &json, block &b);
 
     static block mine_block(int index, const std::vector<uint8_t> &data, const std::vector<uint8_t> &previous_hash,
                             unsigned int difficulty, unsigned int thread_id = 0, unsigned int num_threads = 1, const std::atomic_bool &block_minded = false);
