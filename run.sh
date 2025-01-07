@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Assign arguments to variables
-PROGRAM_PATH="/home/mic/CLionProjects/blockchain/cmake-build-debug/blockchain"
+PROGRAM_PATH="/home/mic/CLionProjects/blockchain/cmake-build-release/blockchain"
 NUM_OF_PROCESSES=4
 DIFFICULTY=4
 INPUT_FILE="/home/mic/CLionProjects/blockchain/data.json"
