@@ -30,7 +30,6 @@ public:
             to_json(json, chain);
             file << json.dump(4);
             file.close();
-            std::cout << "Blockchain saved to " << filename << ".\n";
             return true;
         }
 
