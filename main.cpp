@@ -1,6 +1,8 @@
 #include <mpi.h>
 #include <fstream>
 #include <iostream>
+#include <mutex>
+#include <string>
 #include <thread>
 
 #include "json.hpp"
@@ -67,11 +69,11 @@ void adjust_difficulty(blockchain &chain, const int expected_num_blocks, const i
     if (const auto actual_time = chain.blocks.back().get_timestamp() - test_block.get_timestamp();
         actual_time < expected_time / 2) {
         chain.difficulty++;
-        std::cout << "Difficulty increased to " << chain.difficulty << ".\n";
+        // std::cout << "Difficulty increased to " << chain.difficulty << ".\n";
     } else if (actual_time > expected_time * 2) {
         if (chain.difficulty > 1) {
             chain.difficulty--;
-            std::cout << "Difficulty decreased to " << chain.difficulty << ".\n";
+            // std::cout << "Difficulty decreased to " << chain.difficulty << ".\n";
         }
     }
 }
@@ -96,45 +98,38 @@ void master_process(const std::vector<uint8_t> &input_data, const unsigned int d
     // Mine genesis block on master
     std::string genesis_data = "genesis";
     std::vector<uint8_t> genesis_vector(genesis_data.begin(), genesis_data.end());
-    block genesis_block = block::mine_block(0, genesis_vector, {}, difficulty);
-    if (!chain.add_block(genesis_block)) {
+    if (block genesis_block = block::mine_block(0, genesis_vector, {}, difficulty); !chain.add_block(genesis_block)) {
         std::cerr << "Failed to add genesis block!\n";
         MPI_Abort(MPI_COMM_WORLD, 1);
         return;
     }
-    std::cout << "Genesis block mined and added:\n" << genesis_block.to_string() << std::endl;
 
     // Segment data into chunks
     auto chunks = segment_data(input_data, CHUNK_SIZE);
-    int next_chunk = 0;
+    int current_chunk = 0;
     int active_workers = num_processes - 1;
 
-    // Track assigned work to ensure proper sequencing
-    std::map<int, int> worker_assignments; // worker rank -> chunk index
-
-
-    // Initial distribution of work
-    for (int rank = 1; rank < num_processes && next_chunk < chunks.size(); ++rank) {
+    // Broadcast the initial chunk to all workers
+    if (current_chunk < chunks.size()) {
         auto current_hash = chain.blocks.back().get_hash();
         MiningTask task{
             .index = static_cast<int>(chain.blocks.size()),
             .difficulty = chain.difficulty,
-            .data = chunks[next_chunk],
+            .data = chunks[current_chunk],
             .previous_hash = current_hash
         };
 
         auto serialized = task.serialize();
-        MPI_Send(serialized.data(), serialized.size(), MPI_BYTE, rank,
-                 TAG_DATA_CHUNK, MPI_COMM_WORLD);
-
-        worker_assignments[rank] = next_chunk;
-        next_chunk++;
+        for (int rank = 1; rank < num_processes; ++rank) {
+            MPI_Send(serialized.data(), serialized.size(), MPI_BYTE, rank,
+                     TAG_DATA_CHUNK, MPI_COMM_WORLD);
+        }
     }
 
-    // Process results and distribute remaining work
+    // Process results and broadcast updates
     while (active_workers > 0) {
         MPI_Status status;
-        std::vector<uint8_t> buffer(1024 * 1024); // Adjust size as needed
+        std::vector<uint8_t> buffer;
         int count;
 
         MPI_Probe(MPI_ANY_SOURCE, TAG_MINED_BLOCK, MPI_COMM_WORLD, &status);
@@ -144,91 +139,71 @@ void master_process(const std::vector<uint8_t> &input_data, const unsigned int d
         MPI_Recv(buffer.data(), count, MPI_BYTE, status.MPI_SOURCE,
                  TAG_MINED_BLOCK, MPI_COMM_WORLD, &status);
 
-        // Deserialize the block using the JSON functions
+        // Deserialize the block
         std::string json_str(buffer.begin(), buffer.end());
         nlohmann::json j = nlohmann::json::parse(json_str);
         block new_block;
         block::from_json(j, new_block);
 
-        // Verify the block's previous hash matches our current chain
-        if (new_block.get_previous_hash() != chain.blocks.back().get_hash()) {
-            std::cout << "Block " << new_block.get_index() << " has incorrect previous hash, reassigning work...\n";
+        // Verify the mined block
+        if (new_block.get_previous_hash() == chain.blocks.back().get_hash()) {
+            if (chain.add_block(new_block)) {
+                // std::cout << "Block " << new_block.get_index() << " added to chain\n";
 
-            // Reassign the same chunk with updated previous hash
-            int chunk_index = worker_assignments[status.MPI_SOURCE];
-            MiningTask task{
-                .index = static_cast<int>(chain.blocks.size()),
-                .difficulty = chain.difficulty,
-                .data = chunks[chunk_index],
-                .previous_hash = chain.blocks.back().get_hash()
-            };
+                // Adjust difficulty if needed
+                if (chain.blocks.size() % expected_num_blocks == 0) {
+                    adjust_difficulty(chain, expected_num_blocks, expected_mine_time);
+                }
 
-            auto serialized = task.serialize();
-            MPI_Send(serialized.data(), serialized.size(), MPI_BYTE,
-                     status.MPI_SOURCE, TAG_DATA_CHUNK, MPI_COMM_WORLD);
-            continue;
-        }
+                // Broadcast the new block to all workers
+                notify_all_workers(num_processes, new_block);
 
-        if (chain.add_block(new_block)) {
-            std::cout << "Block " << new_block.get_index() << " added to chain\n";
+                // Prepare the next chunk
+                current_chunk++;
+                if (current_chunk < chunks.size()) {
+                    auto current_hash = chain.blocks.back().get_hash();
+                    MiningTask task{
+                        .index = static_cast<int>(chain.blocks.size()),
+                        .difficulty = chain.difficulty,
+                        .data = chunks[current_chunk],
+                        .previous_hash = current_hash
+                    };
 
-            notify_all_workers(num_processes, new_block);
-
-            // Adjust difficulty if needed
-            if (chain.blocks.size() % expected_num_blocks == 0) {
-                adjust_difficulty(chain, expected_num_blocks, expected_mine_time);
-            }
-
-            // Send new work if available
-            if (next_chunk < chunks.size()) {
-                MiningTask task{
-                    .index = static_cast<int>(chain.blocks.size()),
-                    .difficulty = chain.difficulty,
-                    .data = chunks[next_chunk],
-                    .previous_hash = chain.blocks.back().get_hash()
-                };
-
-                auto serialized = task.serialize();
-                MPI_Send(serialized.data(), serialized.size(), MPI_BYTE,
-                         status.MPI_SOURCE, TAG_DATA_CHUNK, MPI_COMM_WORLD);
-
-                worker_assignments[status.MPI_SOURCE] = next_chunk;
-                next_chunk++;
+                    auto serialized = task.serialize();
+                    for (int rank = 1; rank < num_processes; ++rank) {
+                        MPI_Send(serialized.data(), serialized.size(), MPI_BYTE, rank,
+                                 TAG_DATA_CHUNK, MPI_COMM_WORLD);
+                    }
+                } else {
+                    // No more chunks: Terminate all workers
+                    // std::cout << "All chunks processed. Terminating workers...\n";
+                    for (int rank = 1; rank < num_processes; ++rank) {
+                        MPI_Send(nullptr, 0, MPI_BYTE, rank, TAG_TERMINATION, MPI_COMM_WORLD);
+                    }
+                    active_workers = 0; // End processing loop
+                }
             } else {
-                MPI_Send(nullptr, 0, MPI_BYTE, status.MPI_SOURCE,
-                         TAG_TERMINATION, MPI_COMM_WORLD);
-                active_workers--;
+                std::cerr << "Failed to add block " << new_block.get_index() << " to chain\n";
             }
-        } else {
-            std::cerr << "Failed to add block " << new_block.get_index() << " to chain\n";
-            // Reassign the work
-            int chunk_index = worker_assignments[status.MPI_SOURCE];
-            MiningTask task{
-                .index = static_cast<int>(chain.blocks.size()),
-                .difficulty = chain.difficulty,
-                .data = chunks[chunk_index],
-                .previous_hash = chain.blocks.back().get_hash()
-            };
-
-            auto serialized = task.serialize();
-            MPI_Send(serialized.data(), serialized.size(), MPI_BYTE,
-                     status.MPI_SOURCE, TAG_DATA_CHUNK, MPI_COMM_WORLD);
         }
     }
 
     // Validate the final blockchain
     if (chain.validate_chain()) {
-        std::cout << "Blockchain is valid!\n";
+        // std::cout << "Blockchain is valid!\n";
         blockchain::save_blockchain_to_file(chain, "blockchain.json");
     } else {
         std::cerr << "Blockchain validation failed!\n";
     }
+
+
+    // log_performance(num_processes, {global_stats});
 }
 
 void worker_process(const int rank, const int size, const int num_threads = 1) {
     while (true) {
         MPI_Status status;
-        std::vector<uint8_t> buffer(1024 * 1024); // Adjust size as needed
+        std::vector<uint8_t> buffer; // Adjust size as needed
         int count;
 
         // Check for incoming messages without blocking
@@ -240,6 +215,7 @@ void worker_process(const int rank, const int size, const int num_threads = 1) {
         if (status.MPI_TAG == TAG_TERMINATION) {
             MPI_Recv(nullptr, 0, MPI_BYTE, MASTER_RANK, TAG_TERMINATION,
                      MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            // std::cout << "Worker " << rank << " terminating\n";
             break;
         }
 
@@ -278,7 +254,6 @@ void worker_process(const int rank, const int size, const int num_threads = 1) {
                      MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
             auto [index, difficulty, data, previous_hash] = MiningTask::deserialize(buffer);
-
 
             // Launch mining threads
             for (int thread_id = 0; thread_id < num_threads; ++thread_id) {

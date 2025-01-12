@@ -26,9 +26,9 @@ std::vector<uint8_t> block::block_to_vec() {
 
     oss << index << timestamp;
 
-    std::ranges::for_each(data.begin(), data.end(), [&](const uint8_t byte) { oss << byte; });
+    std::ranges::for_each(data, [&](const uint8_t byte) { oss << byte; });
 
-    std::ranges::for_each(previous_hash.begin(), previous_hash.end(), [&](const uint8_t byte) { oss << byte; });
+    std::ranges::for_each(previous_hash, [&](const uint8_t byte) { oss << byte; });
 
     oss << difficulty << nonce;
 
@@ -80,14 +80,23 @@ block block::mine_block(const int index, const std::vector<uint8_t> &data,
     block new_block(index, timestamp, data, previous_hash, difficulty, thread_id);
     const std::string target(difficulty, '0');
 
+    // const auto start_time = std::chrono::steady_clock::now();
+    uint64_t number_of_hashes = 0;
     do {
         new_block.nonce += num_threads;
         new_block.hash = utils::hash(new_block.block_to_vec());
+        number_of_hashes++;
 
         if (block_minded.load()) {
             break;
         }
     } while (utils::vec_to_hex(new_block.hash).substr(0, difficulty) != target);
+
+    // const auto duration = static_cast<double>(std::chrono::duration_cast<std::chrono::microseconds>(
+    //     std::chrono::steady_clock::now() - start_time).count());
+    // std::stringstream ss;
+    // ss << thread_id << " | " << index << " | " << number_of_hashes << " | " << duration << " | " << number_of_hashes * 1'000'000 / duration << '\n';
+    // std::cout << ss.str();
 
     return new_block;
 }

@@ -21,7 +21,7 @@ class block {
     std::vector<uint8_t> hash;
     std::vector<uint8_t> previous_hash;
     unsigned int difficulty{};
-    unsigned int nonce{};
+    uint64_t nonce{};
 
 
     block(const int index, const time_t timestamp, const std::vector<uint8_t> &data,
