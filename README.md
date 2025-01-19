@@ -2,6 +2,31 @@
 
 A high-performance, distributed blockchain implementation using MPI (Message Passing Interface) for parallel block mining across multiple nodes and OpenSSL for cryptographic operations.
 
+# Table of Contents
+
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Prerequisites](#prerequisites)
+4. [Building the Project](#building-the-project)
+   - [Step 1: Create a Build Directory](#1-create-a-build-directory)
+   - [Step 2: Generate Build Files](#2-generate-build-files)
+   - [Step 3: Build the Project](#3-build-the-project)
+5. [Usage](#usage)
+   - [Command Syntax](#command-syntax)
+   - [Parameters](#parameters)
+   - [Example](#example)
+6. [Architecture](#architecture)
+   - [Master Process](#master-process)
+   - [Worker Processes](#worker-processes)
+7. [Output](#output)
+8. [Performance Considerations](#performance-considerations)
+9. [Technical Details](#technical-details)
+   - [Communication Protocol](#communication-protocol)
+   - [Data Structures](#data-structures)
+10. [Error Handling](#error-handling)
+11. [Limitations](#limitations)
+
+
 ## Features
 
 - Distributed mining using MPI for inter-process communication
